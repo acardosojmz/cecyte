@@ -10,7 +10,7 @@ export class Person {
         this.genre = genre;
         this.isSingleMother = isSingleMother;
     }
-    getAge = () => {
+    age = () => {
         return new Date().getFullYear() - this.birthDate.getFullYear();
     }
 

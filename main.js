@@ -7,21 +7,29 @@ const ruralZone = new Zone("RUR","Zona Rural",2.0);
 const urbanZone = new Zone("URB","Zona Urbana",10.0);
 const residentialZone = new Zone("RES","Zona Residencial",25.0);
 
-const jhony =  new Person("Juan Perez",
+import promptSync from 'prompt-sync';
+const prompt = promptSync();
+
+const  ownerName= prompt('Nombre del dueño: ');
+
+
+const person =  new Person(ownerName,
     new Date("1950-01-01"),
     "H",
     false);
 
 const properties = [
-    new Property(100000, ruralZone, jhony),
-    new Property(10000, urbanZone, jhony),
-    new Property(100, residentialZone, jhony)
+    new Property(100000, ruralZone, person),
+    new Property(10000, urbanZone, person),
+    new Property(100, residentialZone, person)
 ];
 
-const taxPropertyForJhony = new TaxProperty("0001",
-    new Date(), properties, jhony);
+const taxPropertyForPerson = new TaxProperty("0001",
+    new Date(), properties, person);
 
-console.log(`TOTAL a pagar: ${taxPropertyForJhony.totalTax()}`)
-console.log(`DESCUENTO a pagar: ${taxPropertyForJhony.discount()}`)
-console.log(`Impuesto a pagar: ${taxPropertyForJhony.totalTaxWithDiscount()}`)
+console.log(`Total a pagar: ${taxPropertyForPerson.totalTax()}`)
+console.log(`Descuento: ${taxPropertyForPerson.discount()}`)
+console.log(`${ownerName} debe pagar: ${taxPropertyForPerson.totalTaxWithDiscount()}`)
+
+
 

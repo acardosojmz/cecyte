@@ -23,7 +23,7 @@ export class TaxProperty {
         const SEVENTY_YEARS = 70;
         const total = this.totalTax();
         let discount = 0;
-        if (this.owner.getAge() >= SEVENTY_YEARS || this.owner.isSingleMother){
+        if (this.owner.age() >= SEVENTY_YEARS || this.owner.isSingleMother){
             if (this.paymentDate.getMonth() <= MonthEnum.February)
                 discount = total * 0.70;
             else {
